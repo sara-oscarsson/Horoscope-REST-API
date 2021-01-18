@@ -1,10 +1,13 @@
 <?php
+require("calculateHoroscope.php");
 try{
     session_start();
     if($_SERVER["REQUEST_METHOD"] === "POST"){
         if(isset($_SESSION["date"])){
             if(isset($_POST["date"])){
-                $_SESSION["date"] = serialize($_POST["date"]);
+                $month_and_day = $_POST["date"];
+                $starSign = splitNumbers($month_and_day);
+                $_SESSION["date"] = serialize($starSign); 
                 echo json_encode(true);
                 exit;
             }else{

@@ -1,11 +1,9 @@
 <?php
-require("calculateHoroscope.php");
 try{
     session_start();
     if($_SERVER["REQUEST_METHOD"] === "GET"){
         if(isset($_SESSION["date"])){
-            $month_and_day = unserialize($_SESSION["date"]);
-            $starSign = splitNumbers($month_and_day);
+            $starSign = unserialize($_SESSION["date"]);
             echo json_encode($starSign);
             exit;
         }else {
